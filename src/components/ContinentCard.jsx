@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import { Component } from 'react';
 import {
     Card,
     CardActions,
@@ -9,40 +9,53 @@ import {
 } from '@mui/material';
 import CreateModal from './Dialogs/CreateModal';
 
-export default function ContinentCard({
-  imageSrc, continentName, description, country,
-}) {
-  const [open, setOpenModal] = useState(false);
+export default class ContinentCard extends Component {
+  state = {
+    open: false,
+  }
 
-  return (
-    <>
-      <Card sx={{ maxWidth: 345, marginBottom: '25px' }}>
-        <CardMedia
-          sx={{ height: 140 }}
-          image={imageSrc}
-          title='green iguana'
+  constructor() {
+    super();
+
+    this.handleToggleOpenModal = this.handleToggleOpenModal.bind(this);
+  }
+
+  render() {
+    const { imageSrc, continentName, description, country } = this.props;
+    return (
+      <>
+        <Card sx={{ maxWidth: 345, marginBottom: '25px' }}>
+          <CardMedia
+            sx={{ height: 140 }}
+            image={imageSrc}
+            title='green iguana'
+          />
+          <CardContent>
+            <Typography gutterBottom variant='h5' component='div'>
+              {continentName}
+            </Typography>
+            <Typography variant='body2' color='text.secondary'>
+              {description.slice(0, 100)}...
+            </Typography>
+          </CardContent>
+          <CardActions>
+            <Button size='small'>Share</Button>
+            <Button size='small' onClick={this.handleToggleOpenModal}>Learn More</Button>
+          </CardActions>
+        </Card>
+        <CreateModal
+          open={this.open}
+          handleOnClose={this.handleToggleOpenModal}
+          imageSrc={imageSrc}
+          continentName={continentName}
+          description={description}
+          country={country}
         />
-        <CardContent>
-          <Typography gutterBottom variant='h5' component='div'>
-            {continentName}
-          </Typography>
-          <Typography variant='body2' color='text.secondary'>
-            {description.slice(0, 100)}...
-          </Typography>
-        </CardContent>
-        <CardActions>
-          <Button size='small'>Share</Button>
-          <Button size='small' onClick={() => setOpenModal(true)}>Learn More</Button>
-        </CardActions>
-      </Card>
-      <CreateModal
-        open={open}
-        handleOnClose={() => setOpenModal(false)}
-        imageSrc={imageSrc}
-        continentName={continentName}
-        description={description}
-        country={country}
-      />
-    </>
-  );
+      </>
+    )
+  }
+
+  handleToggleOpenModal() {
+    this.setState({ open: !this.state.open })
+  }
 }
