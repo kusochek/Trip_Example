@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import {
-    Card,
-    CardActions,
-    CardContent,
-    CardMedia,
-    Button,
-    Typography,
+  Card,
+  CardActions,
+  CardContent,
+  CardMedia,
+  Button,
+  Typography,
 } from '@mui/material';
 import CreateModal from './Dialogs/CreateModal';
 
@@ -13,6 +14,7 @@ export default function ContinentCard({
   imageSrc, continentName, description, country,
 }) {
   const [open, setOpenModal] = useState(false);
+  const pathToContinent = continentName.split(' ').join('_').toLowerCase();
 
   return (
     <>
@@ -31,7 +33,14 @@ export default function ContinentCard({
           </Typography>
         </CardContent>
         <CardActions>
-          <Button size='small'>Share</Button>
+          <Button size='small'>
+            <Link
+              style={{ textDecoration: 'none', color: 'inherit' }}
+              to={`/tripmydream/${pathToContinent}`}
+            >
+              Search...
+            </Link>
+          </Button>
           <Button size='small' onClick={() => setOpenModal(true)}>Learn More</Button>
         </CardActions>
       </Card>
