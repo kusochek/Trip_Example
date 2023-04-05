@@ -4,6 +4,7 @@ import Countries from '../pages/Countries';
 import NotFound from '../pages/NotFound';
 import TripMyDream from '../pages/TripMyDream';
 import GridTemplate from './Templates/GridTemplate';
+import CreateTrip from '../pages/CreateTrip';
 
 export default function CountryRoutes() {
   return (
@@ -11,7 +12,7 @@ export default function CountryRoutes() {
       <Routes>
         <Route path='/*' element={<NotFound />} />
         <Route element={<TripMyDream />} path='/' />
-        <Route path='/edit' element={<>EDIT</>} />
+        <Route path='/create' element={<CreateTrip />} />
         <Route path='/:name' element={<Countries />} />
       </Routes>
     </GridTemplate>

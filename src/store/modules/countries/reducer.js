@@ -23,6 +23,7 @@ export const countrySlice = createSlice({
     });
     builder.addCase(thunks.fetchCountry.fulfilled, (state, { payload }) => {
       state.countries = payload;
+      state.filterCountries = payload;
     });
   },
 });
