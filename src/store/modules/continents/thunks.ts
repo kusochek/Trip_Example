@@ -1,9 +1,10 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import { continents } from '../../../api';
 import { moduleName } from './constant';
+import { IContinents } from './reducer';
 
 const fetchContinents = createAsyncThunk(`${moduleName}/fetchContinents`, async () => {
-  const { data } = await continents.fetch();
+  const { data }: { data: IContinents[] } = await continents.fetch();
   return data;
 });
 

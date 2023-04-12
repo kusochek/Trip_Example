@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, styled } from '@mui/material';
-import ContinentCard from '../components/ContinentCard';
 import { continentsThunks } from '../store/modules/continents';
+import ContinentCard from '../components/ContinentCard';
+import { useAppDispatch, useAppSelector } from '../store/hook';
 
 const ContinentWrapper = styled(Box)(() => ({
   display: 'flex',
@@ -11,8 +12,8 @@ const ContinentWrapper = styled(Box)(() => ({
 }));
 
 export default function TripMyDream() {
-  const { continents } = useSelector((state) => state.continentsReducer);
-  const dispatch = useDispatch();
+  const { continents } = useAppSelector((state) => state.continentsReducer);
+  const dispatch = useAppDispatch();
 
   useEffect(() => {
     (async () => {

@@ -10,9 +10,16 @@ import {
 } from '@mui/material';
 import CreateModal from './Dialogs/CreateModal';
 
+type ContinentCardProps = {
+  imageSrc: string;
+  continentName: string;
+  description: string;
+  country: string;
+}
+
 export default function ContinentCard({
   imageSrc, continentName, description, country,
-}) {
+}: ContinentCardProps) {
   const [open, setOpenModal] = useState(false);
   const pathToContinent = continentName.split(' ').join('_').toLowerCase();
 
