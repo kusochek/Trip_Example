@@ -1,8 +1,8 @@
 import React from 'react';
 import { Grid, Box, styled } from '@mui/material';
 import Header from './Header';
-import NavBar from './NavBar';
 import Footer from './Footer';
+import SwitchNavBar from './SwitchNavBar';
 
 const HeaderWrapper = styled(Box)(() => ({
   backgroundColor: 'rgb(193, 235, 255)',
@@ -31,7 +31,7 @@ const FooterWrapper = styled(Box)(() => ({
   alignItems: 'center',
 }));
 
-export default function GridTemplate({ children }) {
+export default function GridTemplate({ user, children }) {
   return (
     <Grid container>
       <Grid item lg={3}>
@@ -44,7 +44,7 @@ export default function GridTemplate({ children }) {
       </Grid>
       <Grid item lg={3}>
         <NavBarWrapper>
-          <NavBar />
+          <SwitchNavBar user={user} />
         </NavBarWrapper>
       </Grid>
       <Grid item lg={9}>

@@ -7,8 +7,14 @@ import GridTemplate from './Templates/GridTemplate';
 import CreateTrip from '../pages/CreateTrip';
 
 export default function CountryRoutes() {
+  const user = {
+    displayName: 'Johnny Depp',
+    id: 1,
+    roles: ['user', 'admin'],
+  };
+
   return (
-    <GridTemplate>
+    <GridTemplate user={user}>
       <Routes>
         <Route path='/*' element={<NotFound />} />
         <Route element={<TripMyDream />} path='/' />
